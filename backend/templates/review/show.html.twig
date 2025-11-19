@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Laisser un avis{% endblock %}
+
+{% block body %}
+  {# attend que le controller fournisse : form, driver (optionnel), booking (optionnel) #}
+  {% include 'review/_form.html.twig' with { 'form': form, 'driver': driver|default(null), 'booking': booking|default(null) , 'review': null } %}
+{% endblock %}

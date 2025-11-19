@@ -1,0 +1,176 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de {{ user.firstName }} {{ user.lastName }}{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">
+            <i class="bi bi-person-circle"></i> Profil de {{ user.firstName }} {{ user.lastName }}
+        </h1>
+        <a href="javascript:history.back()" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Retour
+        </a>
+    </div>
+
+    <div class="row">
+        {# Colonne gauche : Informations publiques #}
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Informations</h5>
+                </div>
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="bi bi-person-circle" style="font-size: 5rem; color: #0d6efd;"></i>
+                    </div>
+                    <h4>{{ user.firstName }} {{ user.lastName }}</h4>
+                    
+                    {# Badges de rôles #}
+                    <div class="mb-3">
+                        {% for role in user.roles %}
+                            {% if role == 'ROLE_ADMIN' %}
+                                {% set badge_class = 'danger' %}
+                            {% elseif role == 'ROLE_EMPLOYE' %}
+                                {% set badge_class = 'info text-dark' %}
+                            {% else %}
+                                {# ROLE_USER ou autres -> vert #}
+                                {% set badge_class = 'success' %}
+                            {% endif %}
+
+                            <span class="badge bg-{{ badge_class }}">
+                                {{ role_labels[role] ?? (role|replace({'ROLE_':''})|capitalize) }}
+                            </span>
+                        {% endfor %}
+                    </div>
+
+                    {# À propos - NOUVEAU #}
+                    {% if user.about %}
+                        <div class="alert alert-light text-start mb-3">
+                            <strong><i class="bi bi-chat-left-text"></i> À propos :</strong>
+                            <p class="mb-0 mt-2">{{ user.about }}</p>
+                        </div>
+                    {% endif %}
+
+                    {# Note moyenne (à venir avec les avis) #}
+                    <div>
+                    {% set nbReviews = user.receivedReviews|length %}
+                        {% if nbReviews > 0 %}
+                            {% set total = 0 %}
+                            {% for r in user.receivedReviews %}
+                                {% set total = total + (r.rating|default(0)) %}
+                            {% endfor %}
+                            {% set avg = (total / nbReviews) %}
+                            <p class="mb-3">
+                                <strong>Moyenne :</strong>
+                                <span class="text-warning">
+                                    {{ avg|number_format(1, ',', '.') }} / 5
+                                </span>
+                                <small class="text-muted">({{ nbReviews }} avis)</small>
+                            </p>
+                        {% endif %}
+                    </div>
+
+                    {# Informations sensibles uniquement pour l'admin #}
+                    {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
+                        <hr>
+                        <p class="text-start mb-1">
+                            <strong>Email :</strong><br>
+                            <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {# Colonne droite : Avis reçus #}
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-chat-quote"></i> Avis reçus
+                    </h5>
+                </div>
+                <div class="card-body">
+
+                    {# calcul simple de la moyenne (optionnel) #}
+                    {% set nbReviews = user.receivedReviews|length %}
+                    {% if nbReviews > 0 %}
+                        {% set total = 0 %}
+                        {% for r in user.receivedReviews %}
+                            {% set total = total + (r.rating|default(0)) %}
+                        {% endfor %}
+                        {% set avg = (total / nbReviews) %}
+                        <p class="mb-3">
+                            <strong>Moyenne :</strong>
+                            <span class="text-warning">
+                                {{ avg|number_format(1, ',', '.') }} / 5
+                            </span>
+                            <small class="text-muted">({{ nbReviews }} avis)</small>
+                        </p>
+                    {% endif %}
+
+                    {# Liste des avis #}
+                    {% if nbReviews > 0 %}
+                        {% for review in user.receivedReviews %}
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <strong>
+                                                {% if review.author %}
+                                                    {{ (review.author.firstName|default('') ~ ' ' ~ review.author.lastName|default(''))|trim }}
+                                                    {# fallback s'il n'y a pas de prénom/nom #}
+                                                    {% if (review.author.firstName is not defined and review.author.lastName is not defined) and review.author.email is defined %}
+                                                        {{ review.author.email }}
+                                                    {% endif %}
+                                                {% else %}
+                                                    Anonyme
+                                                {% endif %}
+                                            </strong>
+                                        </div>
+
+                                        <div class="text-end">
+                                            {# étoiles 1..5 robustes #}
+                                            {% set rating = review.rating|default(0) %}
+                                            <span class="text-warning" aria-hidden="true">
+                                                {% for i in 1..5 %}
+                                                    {% if i <= rating %}
+                                                        <i class="bi bi-star-fill"></i>
+                                                    {% else %}
+                                                        <i class="bi bi-star"></i>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <p class="text-muted small mb-2">
+                                        {{ review.date ? review.date|date('d/m/Y à H:i') : '' }}
+                                    </p>
+
+                                    <p class="mb-0">{{ review.comment ? review.comment|e : '' }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle"></i>
+                            Aucun avis pour le moment.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Boutons d'action pour l'utilisateur lui-même #}
+    {% if app.user and app.user.id == user.id %}
+        <div class="mt-4">
+            <a href="{{ path('app_user_edit') }}" class="btn btn-warning">
+                <i class="bi bi-pencil"></i> Modifier mon profil
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

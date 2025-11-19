@@ -1,0 +1,95 @@
+<?php //App_Entity_Review
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Review',
+                'id',
+                'rating',
+                'comment',
+                'date',
+                'author',
+                'carpool',
+                'target',
+                'validated',
+                'booking',
+                'status',
+                'driver',
+                'approved',
+                'pending',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'rating' => $o[2],
+                    'comment' => $o[3],
+                    'date' => $o[4],
+                    'author' => $o[5],
+                    'carpool' => $o[6],
+                    'target' => $o[7],
+                    'validated' => $o[8],
+                    'booking' => $o[9],
+                    'status' => $o[10],
+                    'driver' => $o[11],
+                    'approved' => $o[12],
+                    'pending' => $o[13],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'review:read',
+                ],
+                [
+                    'review:read',
+                    'review:write',
+                ],
+                [
+                    'review:read',
+                    'review:write',
+                ],
+                [
+                    'review:read',
+                ],
+                [
+                    'review:read',
+                ],
+                [
+                    'review:read',
+                    'review:write',
+                ],
+                [
+                    'review:read',
+                ],
+                [
+                    'review:read',
+                ],
+                [
+                    'review:read',
+                ],
+                [
+                    'review:read',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

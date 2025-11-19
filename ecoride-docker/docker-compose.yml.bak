@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  db_ecoride:
+    image: mysql:8.0
+    container_name: er_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword_ecoride
+      MYSQL_DATABASE: sf_EcoRide
+      MYSQL_USER: kevin
+      MYSQL_PASSWORD: kevin_password
+    ports:
+      - "3310:3306"
+    volumes:
+      - ecoride_db_data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ecoride_net
+
+  phpmyadmin_ecoride:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: er_phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - db_ecoride
+    environment:
+      PMA_HOST: db_ecoride
+      PMA_PORT: 3306
+    volumes:
+      - ./phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:ro
+    ports:
+      - "8082:80"
+    networks:
+      - ecoride_net
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: er_backend
+    restart: unless-stopped
+    depends_on:
+      db_ecoride:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: "mysql://kevin:kevin_password@db_ecoride:3306/sf_EcoRide"
+      APP_ENV: dev
+    volumes:
+      - ../backend:/var/www/html:delegated
+    working_dir: /var/www/html
+    ports:
+      - "8000:8000"
+    command: sh -c "composer install --no-interaction --prefer-dist || true && php -S 0.0.0.0:8000 -t public"
+    networks:
+      - ecoride_net
+
+  frontend:
+    image: nginx:alpine
+    container_name: er_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    volumes:
+      - ../frontend:/usr/share/nginx/html:ro
+    ports:
+      - "3000:80"
+    networks:
+      - ecoride_net
+
+volumes:
+  ecoride_db_data:
+
+networks:
+  ecoride_net:
+    driver: bridge

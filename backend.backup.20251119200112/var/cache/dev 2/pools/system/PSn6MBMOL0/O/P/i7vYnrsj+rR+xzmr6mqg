@@ -1,0 +1,109 @@
+<?php //App_Entity_Booking
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Booking',
+                'id',
+                'bookingDate',
+                'reservedSeats',
+                'status',
+                'passenger',
+                'carpool',
+                'completedAt',
+                'reviews',
+                'seats',
+                'statusLabels',
+                'statusLabel',
+                'statusBadgeClasses',
+                'statusBadgeClass',
+                'pending',
+                'confirmed',
+                'refused',
+                'cancelled',
+                'user',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'bookingDate' => $o[2],
+                    'reservedSeats' => $o[3],
+                    'status' => $o[4],
+                    'passenger' => $o[5],
+                    'carpool' => $o[6],
+                    'completedAt' => $o[7],
+                    'reviews' => $o[8],
+                    'seats' => $o[9],
+                    'statusLabels' => $o[10],
+                    'statusLabel' => $o[11],
+                    'statusBadgeClasses' => $o[12],
+                    'statusBadgeClass' => $o[13],
+                    'pending' => $o[14],
+                    'confirmed' => $o[15],
+                    'refused' => $o[16],
+                    'cancelled' => $o[17],
+                    'user' => $o[18],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'booking:read',
+                ],
+                [
+                    'booking:read',
+                ],
+                [
+                    'booking:read',
+                    'booking:write',
+                ],
+                [
+                    'booking:read',
+                ],
+                [
+                    'booking:read',
+                    'booking:write',
+                    'user:read',
+                ],
+                [
+                    'booking:read',
+                    'booking:write',
+                    'carpool:read',
+                ],
+                [
+                    'booking:read',
+                ],
+                [
+                    'booking:read',
+                ],
+            ],
+            'serializedName' => [
+                3 => 'seats',
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

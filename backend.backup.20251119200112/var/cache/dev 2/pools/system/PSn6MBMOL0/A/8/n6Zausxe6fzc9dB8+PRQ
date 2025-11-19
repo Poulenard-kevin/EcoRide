@@ -1,0 +1,101 @@
+<?php //App_Entity_Car
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Car',
+                'id',
+                'brand',
+                'model',
+                'color',
+                'fuelType',
+                'registration',
+                'seats',
+                'driverPreferences',
+                'otherPreferences',
+                'firstRegistration',
+                'owner',
+                'carpools',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'brand' => $o[2],
+                    'model' => $o[3],
+                    'color' => $o[4],
+                    'fuelType' => $o[5],
+                    'registration' => $o[6],
+                    'seats' => $o[7],
+                    'driverPreferences' => $o[8],
+                    'otherPreferences' => $o[9],
+                    'firstRegistration' => $o[10],
+                    'owner' => $o[11],
+                    'carpools' => $o[12],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'car:read',
+                ],
+                [
+                    'car:read',
+                    'car:write',
+                ],
+                [
+                    'car:read',
+                    'car:write',
+                ],
+                [
+                    'car:read',
+                    'car:write',
+                ],
+                [
+                    'car:read',
+                    'car:write',
+                ],
+                [
+                    'car:read',
+                    'car:write',
+                ],
+                [
+                    'car:read',
+                    'car:write',
+                ],
+                [
+                    'car:read',
+                    'car:write',
+                ],
+                [
+                    'car:read',
+                    'car:write',
+                ],
+                [
+                    'car:read',
+                    'car:write',
+                ],
+                [
+                    'car:read',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

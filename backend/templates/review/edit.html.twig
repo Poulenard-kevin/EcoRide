@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon avis{% endblock %}
+
+{% block body %}
+  {# attend : form, review (l'entité existante), éventuellement booking/driver #}
+  {% include 'review/_form.html.twig' with { 'form': form, 'review': review, 'driver': driver|default(null), 'booking': booking|default(null) } %}
+
+  {# bouton supprimer (si tu as le partial _delete_form) #}
+  <div class="container py-2">
+    <div class="text-end">
+      {{ include('review/_delete_form.html.twig') }}
+    </div>
+  </div>
+{% endblock %}

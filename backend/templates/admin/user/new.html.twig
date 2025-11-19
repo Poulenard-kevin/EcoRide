@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un utilisateur{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white d-flex align-items-center">
+                    <i class="bi bi-person-plus fs-4 me-2"></i>
+                    <h2 class="h5 mb-0">Créer un nouvel utilisateur</h2>
+                </div>
+
+                <div class="card-body p-4">
+                    {{ include('admin/user/_form.html.twig', { 'form': form }) }}
+                </div>
+
+                <div class="card-footer bg-light text-end">
+                    <a href="{{ path('app_admin_user_index') }}" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left-circle"></i> Retour à la liste
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

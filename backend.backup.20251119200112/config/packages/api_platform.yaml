@@ -1,0 +1,13 @@
+api_platform:
+    title: 'My API'
+    description: 'API pour EcoRide.'
+    version: '1.0.0'
+
+    swagger:
+        versions: [3]
+
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+    
+    patch_formats:
+        json: ['application/merge-patch+json']

@@ -1,0 +1,6 @@
+{% extends 'base.html.twig' %}
+{% block title %}Laisser un avis{% endblock %}
+
+{% block body %}
+  {% include 'review/_form.html.twig' with { 'form': form, 'driver': driver } %}
+{% endblock %}
