@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Roboto:wght@400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="scss/_custom.scss">
+    <link rel="stylesheet" href="scss/main.css">
+   
+    
+
+   
+    <title>Document</title>
+</head>
+<body class="page-index">
+
+    <header style="background-color: #F1E7D1;">
+      <nav class="navbar navbar-expand-lg" data-bs-theme="light" aria-label="Main navigation">
+        <a class="navbar-brand" href="#">
+          <img src="images/Logo-EcoRide.PNG" alt="EcoRide Logo" class="logo">
+          EcoRide
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/accueil">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/covoiturage">Covoiturage</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/espace-utilisateur">Espace utilisateur</a>
+            </li>
+            <li class="nav-item dropdown">
+              <button class="nav-link dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Menu
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item connexion" id="dropdown-register" href="/auth?tab=register">Inscription</a></li>
+                <li><a class="dropdown-item" href="/espace-employe">Espace employé</a></li>
+                <li><a class="dropdown-item" href="/espace-administrateur">Espace administrateur</a></li>
+                <li><a class="dropdown-item" href="/contact">Contact</a></li>
+                <li><a class="dropdown-item" id="dropdown-login" href="/auth?tab=login">Connexion</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+<!--ici le menu pour tablette et portable-->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu EcoRide</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link" href="/accueil">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/covoiturage">Covoiturage</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/espace-utilisateur">Espace utilisateur</a>
+          </li>
+          <li class="nav-item">
+            <a class="dropdown-item connexion" id="dropdown-register" href="/auth?tab=register">Inscription</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/espace-employe">Espace employé</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/espace-administrateur">Espace administrateur</a>
+          </li>
+          <li class="nav-item">
+            <a class="dropdown-item" id="dropdown-login" href="/auth?tab=login">Connexion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <main id="main-page">
+      <div id="loader-overlay" style="
+        display:none; /* Caché par défaut */
+        position: fixed;
+        top:0; left:0; right:0; bottom:0;
+        background: rgba(255,255,255,0.9); /* Fond semi-transparent */
+        z-index: 9999; /* Au-dessus de tout */
+        display: flex; /* Pour centrer le contenu du loader */
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        color: #555;
+      ">
+        Chargement...
+      </div>
+    </main>
+
+    <footer class="footer-responsive">
+      <div class="contact navigation-text">
+        <a href="/contact">contact@ecoride.fr</a>
+      </div>
+      <div class="social-icons">
+        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+      </div>
+      <div class="mentions navigation-text">
+        <a href="/mentions-legales.html">Mentions légales</a>
+      </div>
+      <script src="/assets/js/common.js" defer></script>
+    </footer>
+
+
+    <!-- libs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+
+  <!-- Router SPA (doit rester) -->
+  <script type="module" src="/Router/router.js"></script>
+
+  <!-- bootstrap + autres scripts non-module -->
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="Js/search.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="assets/js/cars-api.js"></script>
+
+  <!-- modules page-specific (si tu veux les charger globalement) -->
+  <script type="module" src="/Js/trajets.js"></script>
+  <script type="module" src="/Js/covoiturage.js"></script>
+  
+  
+</body>
+</html>
